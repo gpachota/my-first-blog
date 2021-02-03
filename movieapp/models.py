@@ -12,10 +12,10 @@ class List(models.Model):
 
 
 class Movie(models.Model):
-    list = models.ForeignKey('movieapp.list', on_delete=models.CASCADE, related_name='movie')
+    list = models.ForeignKey('movieapp.list', on_delete=models.CASCADE, related_name='movies')
     title = models.CharField(max_length=200)
     added_by = models.ForeignKey('auth.user', on_delete=models.CASCADE)
-    created_at = models.DateTimeField(default=timezone.now)
+    watched = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
